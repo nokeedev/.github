@@ -1,1 +1,5 @@
+pluginManagement {
+	includeBuild 'gradle/plugins/jbake-gradle-plugin'
+}
+
 rootProject.name = 'dotgithub'
