@@ -23,9 +23,6 @@ jbake {
 }
 
 publishing {
-    repositories {
-        maven { url = 'repo' }
-    }
     publications.register('jbake', MavenPublication) {
         from components.jbake
         artifactId = 'component-menu'

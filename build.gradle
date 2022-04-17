@@ -107,9 +107,6 @@ dependencies {
 }
 
 publishing {
-	repositories {
-		maven { url = 'repo' }
-	}
 	publications.register('jbake', MavenPublication) {
 		from components.jbake
 	}

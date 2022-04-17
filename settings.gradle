@@ -28,4 +28,12 @@ gradle.allprojects {
 	repositories {
 		mavenCentral()
 	}
+
+	pluginManager.withPlugin('maven-publishing') {
+		publishing {
+			repositories {
+				maven { url = "${rootDir}/repo" }
+			}
+		}
+	}
 }
