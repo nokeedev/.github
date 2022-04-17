@@ -3,8 +3,10 @@
 <head>
 	<meta charset="${content.encoding}">
 	<% include 'component-favicon.head.gsp' %>
+	<% include 'component-menu.head.gsp' %>
 </head>
 <body>
+<% include 'component-menu.body.gsp' %>
 	<main class="main-content">
 
 	<h1>${content.title}</h1>

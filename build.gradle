@@ -91,6 +91,7 @@ jbake {
 }
 
 dependencies {
+	jbake project(':menu')
 	jbake project(':favicon')
 }
 

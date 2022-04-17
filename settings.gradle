@@ -19,6 +19,7 @@ void component(String path) {
 }
 
 component('favicon')
+component('menu')
 
 gradle.allprojects {
 	repositories {
