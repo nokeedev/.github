@@ -95,6 +95,7 @@ jbake {
 dependencies {
 	jbake project(':menu')
 	jbake project(':favicon')
+	jbake project(':title')
 }
 
 // Consumer will bake from content

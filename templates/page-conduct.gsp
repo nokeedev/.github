@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
+	<% include 'component-title.head.gsp' %>
 	<meta charset="${content.encoding}">
 	<% include 'component-favicon.head.gsp' %>
 	<% include 'component-menu.head.gsp' %>

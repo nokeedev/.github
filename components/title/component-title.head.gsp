@@ -1,0 +1,1 @@
+<title><%if (content.title) {%>${content.title}<% } else { %>Nokee Labs<% }%></title>
