@@ -21,6 +21,7 @@ component('favicon')
 component('menu')
 component('title')
 component('meta-page-information')
+component('meta-open-graph')
 
 gradle.allprojects {
 	repositories {
