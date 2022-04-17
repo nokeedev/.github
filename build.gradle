@@ -63,13 +63,13 @@ def convertTask = tasks.register('convert') { task ->
 
 convertTask.configure(convertMarkdownToAsciidoc { spec ->
 	spec.markdownFile = project.file('CODE_OF_CONDUCT.md')
-	spec.asciidocPath = 'conduct/index.adoc'
+	spec.asciidocPath = 'conduct.adoc'
 	spec.bakeType = 'conduct_page'
 })
 
 convertTask.configure(convertMarkdownToAsciidoc { spec ->
 	spec.markdownFile = project.file('SUPPORT.md')
-	spec.asciidocPath = 'support/index.adoc'
+	spec.asciidocPath = 'support.adoc'
 	spec.bakeType = 'support_page'
 })
 
@@ -87,7 +87,8 @@ jbake {
 		'render.page': true,
 		'render.feed': false,
 		'template.conduct_page.file': 'page-conduct.gsp',
-		'template.support_page.file': 'page-support.gsp'
+		'template.support_page.file': 'page-support.gsp',
+		'uri.noExtension': false, // see https://jbake.org/docs/2.6.7/#enable_extensionless_uris
 	])
 }
 
