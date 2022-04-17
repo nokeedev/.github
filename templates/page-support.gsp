@@ -8,6 +8,7 @@
 
 	<% include 'component-meta-page-information.head.gsp' %>
 	<% include 'component-meta-open-graph.head.gsp' %>
+	<% include 'component-meta-twitter-card.gsp' %>
 </head>
 <body>
 <% include 'component-menu.body.gsp' %>

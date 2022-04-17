@@ -22,6 +22,7 @@ component('menu')
 component('title')
 component('meta-page-information')
 component('meta-open-graph')
+component('meta-twitter-card')
 
 gradle.allprojects {
 	repositories {
