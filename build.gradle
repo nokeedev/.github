@@ -52,6 +52,7 @@ private static Action<Task> convertMarkdownToAsciidoc(Action<? super MarkdownToA
 					it.standardOutput(outStream)
 				})
 			}
+			asciidocFile.text = asciidocFile.text.replace('== ', '= ')
 		}
 	}
 }
