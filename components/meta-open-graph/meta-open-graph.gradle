@@ -12,21 +12,6 @@ jbake {
     it.skip()
 }
 
-// This component have no assets
-((AdhocComponentWithVariants) components.jbake).withVariantsFromConfiguration(jbake.dependencies.assetsElements.get()) {
-    it.skip()
-}
-
-// This component have no content
-((AdhocComponentWithVariants) components.jbake).withVariantsFromConfiguration(jbake.dependencies.contentElements.get()) {
-    it.skip()
-}
-
-// This component have no content
-((AdhocComponentWithVariants) components.jbake).withVariantsFromConfiguration(jbake.dependencies.propertiesElements.get()) {
-    it.skip()
-}
-
 publishing {
     publications.register('jbake', MavenPublication) {
         from components.jbake
