@@ -1,0 +1,87 @@
+plugins {
+	id 'net.nokeedev.jbake-site'
+}
+
+/**
+ * Prepares ExecSpec for pandoc tool using host docker command.
+ *
+ * @param action  additional ExecSpec configuration action, must not be null
+ * @return a ExecSpec configuration action, never null
+ */
+private static Action<ExecSpec> pandoc(Action<? super ExecSpec> action) {
+	return { spec ->
+		spec.commandLine('docker', 'run', '--rm', '--volume', "${spec.workingDir}:/data", 'pandoc/core')
+		action.execute(spec)
+	}
+}
+
+class MarkdownToAsciidocSpec {
+	File markdownFile
+	String asciidocPath
+	String bakeType;
+}
+
+/**
+ * Configures generic task to convert markdown to asciidoc file using pandoc.
+ *
+ * @param action  configuration action for MarkdownToAsciidocSpec, must not be null
+ * @return an Task configuration action, never null
+ */
+private static Action<Task> convertMarkdownToAsciidoc(Action<? super MarkdownToAsciidocSpec> action) {
+	return { task ->
+		def spec = new MarkdownToAsciidocSpec()
+		action.execute(spec)
+		task.inputs.file(spec.markdownFile)
+		task.doLast {
+			def asciidocFile = new File(task.temporaryDir, spec.asciidocPath)
+			asciidocFile.parentFile.mkdirs()
+			asciidocFile.withOutputStream { outStream ->
+				def out = new PrintWriter(outStream)
+				out.println(':encoding: UTF-8')
+				out.println(':jbake-type: ' + spec.bakeType)
+				out.println(':jbake-status: published')
+				out.flush()
+
+				project.exec(pandoc {
+					it.args('-t', 'asciidoc', '-f', 'markdown-smart', project.relativePath(spec.markdownFile))
+					it.workingDir(project.projectDir)
+					it.standardOutput(outStream)
+				})
+			}
+		}
+	}
+}
+
+def convertTask = tasks.register('convert') { task ->
+	outputs.dir(project.layout.buildDirectory.dir("tmp/${task.name}"))
+}
+
+convertTask.configure(convertMarkdownToAsciidoc { spec ->
+	spec.markdownFile = project.file('CODE_OF_CONDUCT.md')
+	spec.asciidocPath = 'conduct/index.adoc'
+	spec.bakeType = 'conduct_page'
+})
+
+convertTask.configure(convertMarkdownToAsciidoc { spec ->
+	spec.markdownFile = project.file('SUPPORT.md')
+	spec.asciidocPath = 'support/index.adoc'
+	spec.bakeType = 'support_page'
+})
+
+jbake {
+	content.from(convertTask)
+	templates.from('templates')
+	assets.from('assets')
+	configurations.putAll([
+		'render.encoding': 'UTF-8',
+		'render.tags': false,
+		'render.sitemap': false,
+		'render.index': false,
+		'render.archive': false,
+		'render.post': false,
+		'render.page': true,
+		'render.feed': false,
+		'template.conduct_page.file': 'page-conduct.gsp',
+		'template.support_page.file': 'page-support.gsp'
+	])
+}

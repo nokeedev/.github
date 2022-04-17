@@ -3,3 +3,9 @@ pluginManagement {
 }
 
 rootProject.name = 'dotgithub'
+
+gradle.allprojects {
+	repositories {
+		mavenCentral()
+	}
+}
