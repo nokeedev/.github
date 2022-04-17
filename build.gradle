@@ -96,6 +96,7 @@ dependencies {
 	jbake project(':meta-page-information')
 	jbake project(':meta-open-graph')
 	jbake project(':meta-twitter-card')
+	jbake project(':meta-encoding')
 }
 
 // Consumer will bake from content
