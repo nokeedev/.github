@@ -90,6 +90,10 @@ jbake {
 	])
 }
 
+dependencies {
+	jbake project(':favicon')
+}
+
 // Consumer will bake from content
 ((AdhocComponentWithVariants) components.jbake).withVariantsFromConfiguration(jbake.dependencies.bakedElements.get()) {
 	it.skip()

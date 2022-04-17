@@ -4,6 +4,22 @@ pluginManagement {
 
 rootProject.name = 'dotgithub'
 
+/**
+ * Adds specified component path to this Gradle build.
+ *
+ * @param path  the component path under {@literal components} folder, must not be null
+ */
+void component(String path) {
+	def tokens = path.split('/')
+	def projectName = tokens.collect { name -> name.split('-').collect { it.capitalize() }.join().uncapitalize() }
+	def projectPath = projectName.join(':')
+	include(projectPath)
+	project(":${projectPath}").projectDir = file("components/${path}")
+	project(":${projectPath}").buildFileName = "${tokens.join('-')}.gradle"
+}
+
+component('favicon')
+
 gradle.allprojects {
 	repositories {
 		mavenCentral()

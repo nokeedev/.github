@@ -2,14 +2,15 @@
 <html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
 	<meta charset="${content.encoding}">
+	<% include 'component-favicon.head.gsp' %>
 </head>
 <body>
-	<div class="main-content">
+	<main class="main-content">
 
 	<h1>${content.title}</h1>
 
 	<p>${content.body}</p>
 
-	</div>
+	</main>
 </body>
 </html>

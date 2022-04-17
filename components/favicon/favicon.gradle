@@ -1,0 +1,32 @@
+plugins {
+    id 'net.nokeedev.jbake-site'
+    id 'maven-publish'
+}
+
+group = 'dev.nokee.docs'
+version = '1.0'
+
+jbake {
+    assets.from('assets')
+    templates.from('component-favicon.head.gsp')
+}
+
+// Consumer will bake from content
+((AdhocComponentWithVariants) components.jbake).withVariantsFromConfiguration(jbake.dependencies.bakedElements.get()) {
+    it.skip()
+}
+
+// This component have no content
+((AdhocComponentWithVariants) components.jbake).withVariantsFromConfiguration(jbake.dependencies.contentElements.get()) {
+    it.skip()
+}
+
+publishing {
+    repositories {
+        maven { url = 'repo' }
+    }
+    publications.register('jbake', MavenPublication) {
+        from components.jbake
+        artifactId = 'component-favicon'
+    }
+}
