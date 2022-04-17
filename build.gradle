@@ -75,7 +75,7 @@ convertTask.configure(convertMarkdownToAsciidoc { spec ->
 jbake {
 	content.from(convertTask)
 	templates.from('templates')
-	assets.from('assets')
+	assets.from('assets/favicon')
 	configurations.putAll([
 		'render.encoding': 'UTF-8',
 		'render.tags': false,
@@ -90,10 +90,6 @@ jbake {
 	])
 }
 
-// No assets, skip them
-((AdhocComponentWithVariants) components.jbake).withVariantsFromConfiguration(jbake.dependencies.assetsElements.get()) {
-	it.skip()
-}
 // Consumer will bake from content
 ((AdhocComponentWithVariants) components.jbake).withVariantsFromConfiguration(jbake.dependencies.bakedElements.get()) {
 	it.skip()
