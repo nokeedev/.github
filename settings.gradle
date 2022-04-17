@@ -25,6 +25,9 @@ component('meta-open-graph')
 component('meta-twitter-card')
 
 gradle.allprojects {
+	group = 'dev.nokee.docs'
+	version = '1.0'
+
 	repositories {
 		mavenCentral()
 	}

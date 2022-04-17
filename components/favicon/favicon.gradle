@@ -3,9 +3,6 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'dev.nokee.docs'
-version = '1.0'
-
 jbake {
     assets.from('assets')
     templates.from('component-favicon.head.gsp')
