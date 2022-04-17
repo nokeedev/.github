@@ -32,7 +32,7 @@ gradle.allprojects {
 		mavenCentral()
 	}
 
-	pluginManager.withPlugin('maven-publishing') {
+	pluginManager.withPlugin('maven-publish') {
 		publishing {
 			repositories {
 				maven { url = "${rootDir}/repo" }
