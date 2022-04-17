@@ -1,6 +1,10 @@
 plugins {
 	id 'net.nokeedev.jbake-site'
+	id 'maven-publish'
 }
+
+group = 'dev.nokee.docs'
+version = '1.0'
 
 /**
  * Prepares ExecSpec for pandoc tool using host docker command.
@@ -84,4 +88,22 @@ jbake {
 		'template.conduct_page.file': 'page-conduct.gsp',
 		'template.support_page.file': 'page-support.gsp'
 	])
+}
+
+// No assets, skip them
+((AdhocComponentWithVariants) components.jbake).withVariantsFromConfiguration(jbake.dependencies.assetsElements.get()) {
+	it.skip()
+}
+// Consumer will bake from content
+((AdhocComponentWithVariants) components.jbake).withVariantsFromConfiguration(jbake.dependencies.bakedElements.get()) {
+	it.skip()
+}
+
+publishing {
+	repositories {
+		maven { url = 'repo' }
+	}
+	publications.register('jbake', MavenPublication) {
+		from components.jbake
+	}
 }
