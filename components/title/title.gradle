@@ -22,6 +22,11 @@ jbake {
     it.skip()
 }
 
+// This component have no content
+((AdhocComponentWithVariants) components.jbake).withVariantsFromConfiguration(jbake.dependencies.propertiesElements.get()) {
+    it.skip()
+}
+
 publishing {
     publications.register('jbake', MavenPublication) {
         from components.jbake
