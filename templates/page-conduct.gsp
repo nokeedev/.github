@@ -5,6 +5,8 @@
 	<meta charset="${content.encoding}">
 	<% include 'component-favicon.head.gsp' %>
 	<% include 'component-menu.head.gsp' %>
+
+	<% include 'component-meta-page-information.head.gsp' %>
 </head>
 <body>
 <% include 'component-menu.body.gsp' %>

@@ -11,8 +11,7 @@ rootProject.name = 'dotgithub'
  */
 void component(String path) {
 	def tokens = path.split('/')
-	def projectName = tokens.collect { name -> name.split('-').collect { it.capitalize() }.join().uncapitalize() }
-	def projectPath = projectName.join(':')
+	def projectPath = tokens.join(':')
 	include(projectPath)
 	project(":${projectPath}").projectDir = file("components/${path}")
 	project(":${projectPath}").buildFileName = "${tokens.join('-')}.gradle"
@@ -21,6 +20,7 @@ void component(String path) {
 component('favicon')
 component('menu')
 component('title')
+component('meta-page-information')
 
 gradle.allprojects {
 	repositories {
