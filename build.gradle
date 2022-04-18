@@ -98,6 +98,7 @@ dependencies {
 	jbake project(':meta-twitter-card')
 	jbake project(':meta-encoding')
 	jbake project(':multi-language-sample')
+	jbake project(':asciidoc')
 }
 
 // Consumer will bake from content
