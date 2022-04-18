@@ -1,0 +1,23 @@
+plugins {
+    id 'net.nokeedev.jbake-site'
+    id 'maven-publish'
+}
+
+jbake {
+    assets.from('component-component-multi-language-sample.js')
+    assets.from('component-component-multi-language-sample.css')
+    templates.from('component-multi-language-sample.head.gsp')
+    templates.from('component-multi-language-sample.foot.gsp')
+}
+
+// Consumer will bake from content
+((AdhocComponentWithVariants) components.jbake).withVariantsFromConfiguration(jbake.dependencies.bakedElements.get()) {
+    it.skip()
+}
+
+publishing {
+    publications.register('jbake', MavenPublication) {
+        from components.jbake
+        artifactId = "component-${project.name}"
+    }
+}
