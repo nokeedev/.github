@@ -5,6 +5,8 @@ plugins {
 
 jbake {
     assets.from('component-menu.css')
+    assets.from('component-menu-light.css')
+    assets.from('component-menu-dark.css')
     templates.from('component-menu.body.gsp')
     templates.from('component-menu.head.gsp')
 }

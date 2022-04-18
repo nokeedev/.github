@@ -1,0 +1,36 @@
+.navigation {
+	background-color: #001824;
+}
+
+.navigation ul {
+	background-color: #001824;
+}
+
+.navigation li a, .navigation li a:visited {
+	color: white;
+	font-weight: bold;
+}
+
+.navigation .logo {
+	fill: #00FF8A;
+}
+
+/* GitHub/Twitter logo fill */
+.navigation li a svg path {
+	fill: white;
+}
+
+.navigation li a:hover {
+	color: #00FF8A;
+}
+
+/* menu icon */
+
+.navigation .menu-icon .navicon {
+	background: white;
+}
+
+.navigation .menu-icon .navicon:before,
+.navigation .menu-icon .navicon:after {
+	background: white;
+}
