@@ -17,6 +17,7 @@ void component(String path) {
 	project(":${projectPath}").buildFileName = "${tokens.join('-')}.gradle"
 }
 
+component('asciidoc')
 component('favicon')
 component('menu')
 component('title')
