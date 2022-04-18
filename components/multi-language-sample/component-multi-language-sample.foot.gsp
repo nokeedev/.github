@@ -1,1 +1,1 @@
-<script src="/multi-language-sample.js"></script>
+<script src="/component-multi-language-sample.js"></script>
