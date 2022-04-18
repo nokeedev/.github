@@ -4,9 +4,9 @@ plugins {
 }
 
 jbake {
-    assets.from('component-asciidoc.css')
-    assets.from('component-asciidoc-color-override.css')
-    assets.from('component-asciidoc-override.css')
+    assets.from('component-asciidoctor.css')
+    assets.from('component-asciidoctor-color-override.css')
+    assets.from('component-asciidoctor-override.css')
     templates.from('component-asciidoc.head.gsp')
 }
 
