@@ -15,6 +15,6 @@ jbake {
 publishing {
     publications.register('jbake', MavenPublication) {
         from components.jbake
-        artifactId = 'component-meta-page-information'
+        artifactId = "component-${project.name}"
     }
 }

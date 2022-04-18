@@ -16,6 +16,6 @@ jbake {
 publishing {
     publications.register('jbake', MavenPublication) {
         from components.jbake
-        artifactId = 'component-favicon'
+        artifactId = "component-${project.name}"
     }
 }

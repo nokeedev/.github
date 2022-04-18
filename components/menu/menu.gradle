@@ -17,6 +17,6 @@ jbake {
 publishing {
     publications.register('jbake', MavenPublication) {
         from components.jbake
-        artifactId = 'component-menu'
+        artifactId = "component-${project.name}"
     }
 }
