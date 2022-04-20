@@ -27,9 +27,11 @@ component('meta-twitter-card')
 component('meta-encoding')
 component('multi-language-sample')
 
+// Use date/time as the version because commits mess-up the "latest" search
+def globalVersion = new java.text.SimpleDateFormat("yyyyMMddHHmm").format(new Date())
 gradle.allprojects {
 	group = 'dev.nokee.docs'
-	version = '1.0'
+	version = globalVersion
 
 	repositories {
 		mavenCentral()
