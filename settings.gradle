@@ -40,7 +40,11 @@ gradle.allprojects {
 	pluginManager.withPlugin('maven-publish') {
 		publishing {
 			repositories {
-				maven { url = "${rootDir}/repo" }
+				maven {
+					name = 'docsNokeeDev'
+					credentials(AwsCredentials)
+					url = 's3://docs.nokee.dev/'
+				}
 			}
 		}
 	}
