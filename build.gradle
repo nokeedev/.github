@@ -67,12 +67,20 @@ convertTask.configure(convertMarkdownToAsciidoc { spec ->
 	spec.markdownFile = project.file('CODE_OF_CONDUCT.md')
 	spec.asciidocPath = 'conduct/index.adoc'
 	spec.bakeType = 'conduct_page'
+	spec.attributes = [
+			'jbake-description': 'The contributor covenant Code of Conduct for the Nokee project.',
+			'jbake-tags': 'conduct, coc, contributor',
+	]
 })
 
 convertTask.configure(convertMarkdownToAsciidoc { spec ->
 	spec.markdownFile = project.file('SUPPORT.md')
 	spec.asciidocPath = 'support/index.adoc'
 	spec.bakeType = 'support_page'
+	spec.attributes = [
+			'jbake-description': 'Getting help with Nokee project.',
+			'jbake-tags': 'support, help',
+	]
 })
 
 jbake {
