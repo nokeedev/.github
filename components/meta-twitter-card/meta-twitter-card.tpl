@@ -32,7 +32,7 @@ meta(name: 'twitter:site', content: '@nokeedev') newLine()
 meta(name: 'twitter:creator', content: creator ? creator : '@nokeedev') newLine()
 meta(name: 'twitter:title', content: title) newLine()
 meta(name: 'twitter:description', content: description) newLine()
-if (image) {
+if (card == 'summary_large_image') {
 	meta(name: 'twitter:image', content: image.url) newLine()
 	meta(name: 'twitter:image:alt', content: image.alt) newLine()
 }
