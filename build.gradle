@@ -86,7 +86,6 @@ convertTask.configure(convertMarkdownToAsciidoc { spec ->
 jbake {
 	content.from(convertTask)
 	templates.from('templates')
-	assets.from('assets/favicon')
 	configurations.putAll([
 		'render.encoding': 'UTF-8',
 		'render.tags': false,
