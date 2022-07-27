@@ -20,7 +20,8 @@ private static Action<ExecSpec> pandoc(Action<? super ExecSpec> action) {
 class MarkdownToAsciidocSpec {
 	File markdownFile
 	String asciidocPath
-	String bakeType;
+	String bakeType
+	Map<String, String> attributes
 }
 
 /**
@@ -42,6 +43,9 @@ private static Action<Task> convertMarkdownToAsciidoc(Action<? super MarkdownToA
 				out.println(':encoding: UTF-8')
 				out.println(':jbake-type: ' + spec.bakeType)
 				out.println(':jbake-status: published')
+				spec.attributes.forEach { k, v ->
+					out.println(":${k}: ${v}".toString())
+				}
 				out.flush()
 
 				project.exec(pandoc {
