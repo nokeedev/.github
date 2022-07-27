@@ -30,6 +30,6 @@ meta(property: 'og:site_name', content: 'Nokee') newLine()
 meta(property: 'og:title', content: title) newLine()
 meta(property: 'og:description', content: description) newLine()
 if (image) {
-    meta(property: 'og:image:url', content: image.url) newLine()
+    meta(property: 'og:image', content: image.url) newLine()
     meta(property: 'og:image:alt', content: image.alt) newLine()
 }
