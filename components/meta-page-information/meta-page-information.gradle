@@ -5,6 +5,7 @@ plugins {
 
 jbake {
     templates.from('component-meta-page-information.head.gsp')
+    templates.from('meta-page-information.tpl')
 }
 
 // Consumer will bake from content
