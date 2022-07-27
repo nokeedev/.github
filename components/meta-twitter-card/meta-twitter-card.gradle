@@ -5,6 +5,7 @@ plugins {
 
 jbake {
     templates.from('component-meta-twitter-card.head.gsp')
+    templates.from('meta-twitter-card.tpl')
 }
 
 // Consumer will bake from content
