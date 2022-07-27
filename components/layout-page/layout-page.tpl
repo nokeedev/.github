@@ -55,4 +55,9 @@ layout 'layout-main.tpl',
 				}
 			}
 		}
+
+		if (footerContents) {
+			div(id: 'push') {}
+			footerContents()
+		}
 	}
