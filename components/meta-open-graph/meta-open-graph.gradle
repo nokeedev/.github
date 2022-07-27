@@ -5,6 +5,7 @@ plugins {
 
 jbake {
     templates.from('component-meta-open-graph.head.gsp')
+    templates.from('meta-open-graph.tpl')
 }
 
 // Consumer will bake from content
