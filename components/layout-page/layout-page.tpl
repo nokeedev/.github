@@ -23,8 +23,8 @@ layout 'layout-main.tpl',
 	description: content.description,
 	encoding: content.encoding,
 	keywords: content.tags,
-	useRoughViz: content.useroughviz,
 	url: canonicalPathFor(content.uri),
+	headContents: headContents,
 	logoUrl: config.menu_logoUrl ? config.menu_logoUrl : config.site_host,
 	bodyContents: contents {
 		main(class: 'main-content') {

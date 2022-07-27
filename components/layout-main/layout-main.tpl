@@ -25,9 +25,8 @@ html(lang:'en', prefix:'og: https://ogp.me/ns#') {
 
 		link(href: '/css/docs-base.css', rel: 'stylesheet') newLine()
 		link(href: '/css/blog-layout.css', rel: 'stylesheet') newLine()
-		if (useRoughViz && useRoughViz == 'true') {
-			script(src: 'https://unpkg.com/rough-viz@1.0.6') {} newLine()
-		}
+
+		if (headContents) headContents()
 
 		link(href: '/css/normalize-8.0.1.css', rel: 'stylesheet')
 		link(href: '/css/prettify.css', rel: 'stylesheet')
