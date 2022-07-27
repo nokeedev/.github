@@ -18,6 +18,13 @@ if (!headerContents) {
 	}
 }
 
+def bodyContents = bodyContents
+if (!bodyContents) {
+	bodyContents = contents {
+		yieldUnescaped(content.body)
+	}
+}
+
 def twitter = [:]
 if (content.twitter) twitter.putAll(content.twitter)
 twitter.put('image', [
@@ -44,7 +51,7 @@ layout 'layout-main.tpl',
 				newLine()
 
 				div(class: 'content') {
-					yieldUnescaped(content.body)
+					bodyContents()
 				}
 			}
 		}
