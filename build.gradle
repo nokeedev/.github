@@ -95,8 +95,9 @@ jbake {
 		'render.post': false,
 		'render.page': true,
 		'render.feed': false,
-		'template.conduct_page.file': 'page-conduct.gsp',
-		'template.support_page.file': 'page-support.gsp',
+		'template.conduct_page.file': 'page-conduct.tpl',
+		'template.support_page.file': 'page-support.tpl',
+		'site.host': 'https://nokee.dev/'
 	])
 }
 
