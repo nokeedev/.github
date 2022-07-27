@@ -32,10 +32,11 @@ html(lang:'en', prefix:'og: https://ogp.me/ns#') {
 		link(href: '/css/prettify.css', rel: 'stylesheet')
 
 		layout 'meta-twitter-card.tpl',
-			card: 'summary',
+			card: twitter?.card ? twitter.card : 'summary',
 			title: title,
 			description: description,
-			creator: creator
+			creator: twitter?.creator,
+			image: twitter?.image
 
 		layout 'meta-open-graph.tpl',
 			title: title,
