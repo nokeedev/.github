@@ -4,7 +4,7 @@ assert config : "please pass config"
 def canonicalPathFor = { String path ->
 	def canonicalPath = path
 	if (canonicalPath.endsWith('/index.html')) {
-		canonicalPath = canonicalPath.substring(0, canonicalPath.lastIndexOf('/') + 1)
+		canonicalPath = canonicalPath.substring(0, canonicalPath.lastIndexOf('/'))
 	} else if (canonicalPath == 'index.html') {
 		canonicalPath = ''
 	}
@@ -30,7 +30,7 @@ layout 'layout-main.tpl',
 	description: content.description,
 	encoding: content.encoding,
 	keywords: content.tags,
-	url: canonicalPathFor(content.uri),
+	url: "${canonicalPathFor(content.uri)}/",
 	headContents: headContents,
 	twitter: twitter,
 	logoUrl: config.menu_logoUrl ? config.menu_logoUrl : config.site_host,
