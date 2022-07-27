@@ -99,6 +99,8 @@ dependencies {
 	jbake project(':meta-encoding')
 	jbake project(':multi-language-sample')
 	jbake project(':asciidoc')
+	jbake project(':layout-main')
+	jbake project(':layout-page')
 }
 
 // Consumer will bake from content

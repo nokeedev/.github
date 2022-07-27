@@ -26,6 +26,8 @@ component('meta-open-graph')
 component('meta-twitter-card')
 component('meta-encoding')
 component('multi-language-sample')
+component('layout-main')
+component('layout-page')
 
 // Use date/time as the version because commits mess-up the "latest" search
 def globalVersion = new java.text.SimpleDateFormat("yyyyMMddHHmm").format(new Date())
