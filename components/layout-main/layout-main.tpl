@@ -6,6 +6,8 @@
  */
 assert logoUrl && !logoUrl.trim().empty : "no logo url"
 
+def components = components ?: []
+
 yieldUnescaped '<!DOCTYPE html>'
 html(lang:'en', prefix:'og: https://ogp.me/ns#') {
 	head {
@@ -57,11 +59,9 @@ html(lang:'en', prefix:'og: https://ogp.me/ns#') {
 
 		layout 'meta-favicon.tpl', ignored: false
 
-		if (components) {
-			components.forEach { component ->
-				if (component.stylesheetUrl) {
-					link(href: component.stylesheetUrl, rel: 'stylesheet') newLine()
-				}
+		components.forEach { component ->
+			if (component.stylesheetUrl) {
+				link(href: component.stylesheetUrl, rel: 'stylesheet') newLine()
 			}
 		}
 	}
@@ -111,11 +111,9 @@ html(lang:'en', prefix:'og: https://ogp.me/ns#') {
 
 		// Post scripts to load for speed
 		script(src: '/js/prettify.js') {}
-		if (components) {
-			components.forEach { component ->
-				if (component.scriptUrl) {
-					script(src: component.scriptUrl) {} newLine()
-				}
+		components.forEach { component ->
+			if (component.scriptUrl) {
+				script(src: component.scriptUrl) {} newLine()
 			}
 		}
 	}
