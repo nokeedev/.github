@@ -57,8 +57,12 @@ html(lang:'en', prefix:'og: https://ogp.me/ns#') {
 
 		layout 'meta-favicon.tpl', ignored: false
 
-		if (multiLanguageSampleEnabled) {
-			link(href: '/component-multi-language-sample.css', rel: 'stylesheet') newLine()
+		if (components) {
+			components.forEach { component ->
+				if (component.stylesheetUrl) {
+					link(href: component.stylesheetUrl, rel: 'stylesheet') newLine()
+				}
+			}
 		}
 	}
 
@@ -107,8 +111,12 @@ html(lang:'en', prefix:'og: https://ogp.me/ns#') {
 
 		// Post scripts to load for speed
 		script(src: '/js/prettify.js') {}
-		if (multiLanguageSampleEnabled) {
-			script(src: '/component-multi-language-sample.js') {} newLine()
+		if (components) {
+			components.forEach { component ->
+				if (component.scriptUrl) {
+					script(src: component.scriptUrl) {} newLine()
+				}
+			}
 		}
 	}
 }

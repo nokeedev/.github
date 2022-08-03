@@ -18,7 +18,6 @@ dependencies {
     jbake project(':meta-page-information')
     jbake project(':meta-open-graph')
     jbake project(':meta-twitter-card')
-    jbake project(':multi-language-sample')
 }
 
 // Consumer will bake from content
