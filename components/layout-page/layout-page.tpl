@@ -25,6 +25,16 @@ if (!bodyContents) {
 	}
 }
 
+def primaryNavigationContents = primaryNavigationContents
+if (!primaryNavigationContents) {
+	primaryNavigationContents = contents {}
+}
+
+def secondaryNavigationContents = secondaryNavigationContents
+if (!secondaryNavigationContents) {
+	secondaryNavigationContents = contents {}
+}
+
 def headContents = headContents
 if (!headContents) {
 	headContents = contents {
@@ -51,6 +61,8 @@ layout 'layout-main.tpl',
 	logoUrl: config.menu_logoUrl ? config.menu_logoUrl : config.site_host,
 	bodyContents: contents {
 		main(class: 'main-content') {
+			primaryNavigationContents()
+
 			div(class: 'chapter') {
 				div(class: 'header') {
 					headerContents()
@@ -62,6 +74,8 @@ layout 'layout-main.tpl',
 					bodyContents()
 				}
 			}
+
+			secondaryNavigationContents()
 		}
 
 		if (footerContents) {
