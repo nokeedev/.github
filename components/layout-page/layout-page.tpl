@@ -64,13 +64,13 @@ layout 'layout-main.tpl',
 			primaryNavigationContents()
 
 			div(class: 'chapter') {
-				div(class: 'header') {
+				div(id: 'header') {
 					headerContents()
 				}
 
 				newLine()
 
-				div(class: 'content') {
+				div(id: 'content') {
 					bodyContents()
 				}
 			}
