@@ -64,6 +64,13 @@ def openGraph = [
 	]
 ]
 
+def pageInfo = [
+	author: 'Nokee',
+	url: "${canonicalPathFor(content.uri)}/",
+	description: content.description,
+	keywords: content.tags,
+]
+
 layout 'layout-main.tpl',
 	components: components,
 	title: content.title,
@@ -74,6 +81,7 @@ layout 'layout-main.tpl',
 	headContents: headContents,
 	twitter: twitter,
 	openGraph: openGraph,
+	pageInfo: pageInfo,
 	logoUrl: config.menu_logoUrl ? config.menu_logoUrl : config.site_host,
 	bodyContents: contents {
 		main(class: 'main-content') {

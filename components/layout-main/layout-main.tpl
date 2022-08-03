@@ -24,6 +24,14 @@ def openGraph = [
 	url: openGraph?.url,
 ]
 
+def pageInfo = [
+	enabled: pageInfo != null,
+	author: pageInfo?.author,
+	keywords: pageInfo?.keywords,
+	description: pageInfo?.description,
+	url: pageInfo?.url,
+]
+
 yieldUnescaped '<!DOCTYPE html>'
 html(lang:'en', prefix:'og: https://ogp.me/ns#') {
 	head {
@@ -52,11 +60,7 @@ html(lang:'en', prefix:'og: https://ogp.me/ns#') {
 		if (openGraph.enabled) layout 'meta-open-graph.tpl', *:openGraph
 		layout 'meta-encoding.tpl', encoding: encoding ?: 'UTF-8'
 		meta(name: 'viewport', content: 'width=device-width, initial-scale=1.0') newLine()
-
-		layout 'meta-page-information.tpl',
-			keywords: keywords,
-			description: description,
-			url: url
+		if (pageInfo.enabled) layout 'meta-page-information.tpl', *:pageInfo
 
 		link(href: '/component-menu.css', rel: 'stylesheet') newLine()
 		if (colorScheme && colorScheme == 'dark') {
