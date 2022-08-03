@@ -24,7 +24,6 @@ html(lang:'en', prefix:'og: https://ogp.me/ns#') {
 		link(href: '/component-asciidoctor-color-override.css', rel: 'stylesheet') newLine()
 
 		link(href: '/css/docs-base.css', rel: 'stylesheet') newLine()
-		link(href: '/css/blog-layout.css', rel: 'stylesheet') newLine()
 
 		if (headContents) headContents()
 

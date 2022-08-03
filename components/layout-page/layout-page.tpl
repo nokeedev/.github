@@ -25,6 +25,13 @@ if (!bodyContents) {
 	}
 }
 
+def headContents = headContents
+if (!headContents) {
+	headContents = contents {
+		link(rel: 'stylesheet', href: '/css/blog-layout.css') newLine()
+	}
+}
+
 def twitter = [:]
 if (content.twitter) twitter.putAll(content.twitter)
 twitter.put('image', [
