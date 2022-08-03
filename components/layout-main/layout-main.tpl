@@ -17,6 +17,13 @@ def twitter = [
 	image: twitter?.image
 ]
 
+def openGraph = [
+	enabled: openGraph != null,
+	title: openGraph?.title,
+	description: openGraph?.description,
+	url: openGraph?.url,
+]
+
 yieldUnescaped '<!DOCTYPE html>'
 html(lang:'en', prefix:'og: https://ogp.me/ns#') {
 	head {
@@ -42,11 +49,7 @@ html(lang:'en', prefix:'og: https://ogp.me/ns#') {
 		link(href: '/css/prettify.css', rel: 'stylesheet')
 
 		if (twitter.enabled) layout 'meta-twitter-card.tpl', *:twitter
-
-		layout 'meta-open-graph.tpl',
-			title: title,
-			description: description,
-			url: url
+		if (openGraph.enabled) layout 'meta-open-graph.tpl', *:openGraph
 
 		layout 'meta-page-information.tpl',
 			encoding: encoding,

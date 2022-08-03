@@ -54,6 +54,16 @@ def twitter = [
 ]
 if (content.twitter) twitter.putAll(content.twitter)
 
+def openGraph = [
+	title: content.title,
+	url: "${canonicalPathFor(content.uri)}/",
+	description: content.description,
+	image: [
+		url: content?.leadimage ? "${canonicalPathFor(content.uri)}/${content.leadimage}" : null,
+		alt: content?.leadimagealt,
+	]
+]
+
 layout 'layout-main.tpl',
 	components: components,
 	title: content.title,
@@ -63,6 +73,7 @@ layout 'layout-main.tpl',
 	url: "${canonicalPathFor(content.uri)}/",
 	headContents: headContents,
 	twitter: twitter,
+	openGraph: openGraph,
 	logoUrl: config.menu_logoUrl ? config.menu_logoUrl : config.site_host,
 	bodyContents: contents {
 		main(class: 'main-content') {

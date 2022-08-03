@@ -16,8 +16,7 @@ assert url : "Open Graph canonical URL must be defined"
 assert !url.trim().empty : "Open Graph canonical URL cannot be empty"
 assert !url.startsWith('http://') : "Open Graph canonical URL should use secured protocol"
 assert url.startsWith('https://') : "Open Graph canonical URL should use 'https' protocol: '${url}'"
-if (image) {
-    assert image.url : "Open Graph image URL must be defined"
+if (image && image.url) {
     assert !image.url.startsWith('http://') : "Open Graph image URL should use secured protocol"
     assert image.url.startsWith('https://') : "Open Graph image URL should use 'https' protocol: '${url}'"
     assert image.alt : "Open Graph image alt-text must be defined"
@@ -29,7 +28,7 @@ meta(property: 'og:url', content: url) newLine()
 meta(property: 'og:site_name', content: 'Nokee') newLine()
 meta(property: 'og:title', content: title) newLine()
 meta(property: 'og:description', content: description) newLine()
-if (image) {
+if (image && image.url) {
     meta(property: 'og:image', content: image.url) newLine()
     meta(property: 'og:image:alt', content: image.alt) newLine()
 }
