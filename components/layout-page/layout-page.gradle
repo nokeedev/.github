@@ -5,6 +5,9 @@ plugins {
 
 jbake {
     templates.from('layout-page.tpl')
+    templates.from('fragment-chapter.tpl')
+    templates.from('fragment-copyright.tpl')
+    templates.from('fragment-main-content.tpl')
 }
 
 dependencies {

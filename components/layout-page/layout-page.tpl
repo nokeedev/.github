@@ -25,16 +25,6 @@ if (!pageContents) {
 	}
 }
 
-def primaryNavigationContents = primaryNavigationContents
-if (!primaryNavigationContents) {
-	primaryNavigationContents = contents {}
-}
-
-def secondaryNavigationContents = secondaryNavigationContents
-if (!secondaryNavigationContents) {
-	secondaryNavigationContents = contents {}
-}
-
 def headContents = headContents
 if (!headContents) {
 	headContents = contents {
@@ -74,22 +64,10 @@ def pageInfo = [
 def bodyContents = bodyContents
 if (!bodyContents) {
 	bodyContents = contents {
-		main(class: 'main-content') {
-			primaryNavigationContents()
-
-			div(class: 'chapter') {
-				div(id: 'header') {
-					headerContents()
-				}
-
-				newLine()
-
-				div(id: 'content') {
-					pageContents()
-				}
-			}
-
-			secondaryNavigationContents()
+		layout 'fragment-main-content.tpl', bodyContents: {
+			layout 'fragment-chapter.tpl',
+				headerContents: headerContents,
+				bodyContents: pageContents
 		}
 
 		if (footerContents) {
@@ -97,13 +75,7 @@ if (!bodyContents) {
 			footerContents()
 		}
 
-		div(id: 'push') {}
-
-		div(id: 'footer') {
-			div(class: 'container') {
-				p(class: 'muted credit', '&copy; 2020')
-			}
-		}
+		layout 'fragment-copyright.tpl', ignored: false
 	}
 }
 
