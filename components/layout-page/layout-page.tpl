@@ -82,4 +82,8 @@ layout 'layout-main.tpl',
 			div(id: 'push') {}
 			footerContents()
 		}
+
+		if (footContents) {
+			footContents()
+		}
 	}
