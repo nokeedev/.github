@@ -51,6 +51,7 @@ html(lang:'en', prefix:'og: https://ogp.me/ns#') {
 		if (twitter.enabled) layout 'meta-twitter-card.tpl', *:twitter
 		if (openGraph.enabled) layout 'meta-open-graph.tpl', *:openGraph
 		layout 'meta-encoding.tpl', encoding: encoding ?: 'UTF-8'
+		meta(name: 'viewport', content: 'width=device-width, initial-scale=1.0') newLine()
 
 		layout 'meta-page-information.tpl',
 			keywords: keywords,
