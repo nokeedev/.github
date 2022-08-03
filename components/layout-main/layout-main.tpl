@@ -1,8 +1,6 @@
 /**
  * @param title
  * @param encoding
- * @param description
- * @param canonicalUrl
  */
 assert logoUrl && !logoUrl.trim().empty : "no logo url"
 
