@@ -18,9 +18,9 @@ if (!headerContents) {
 	}
 }
 
-def bodyContents = bodyContents
-if (!bodyContents) {
-	bodyContents = contents {
+def pageContents = pageContents
+if (!pageContents) {
+	pageContents = contents {
 		yieldUnescaped(content.body)
 	}
 }
@@ -71,16 +71,9 @@ def pageInfo = [
 	keywords: content.tags,
 ]
 
-layout 'layout-main.tpl',
-	components: components,
-	title: content.title,
-	encoding: content.encoding,
-	headContents: headContents,
-	twitter: twitter,
-	openGraph: openGraph,
-	pageInfo: pageInfo,
-	logoUrl: config.menu_logoUrl ? config.menu_logoUrl : config.site_host,
-	bodyContents: contents {
+def bodyContents = bodyContents
+if (!bodyContents) {
+	bodyContents = contents {
 		main(class: 'main-content') {
 			primaryNavigationContents()
 
@@ -92,11 +85,16 @@ layout 'layout-main.tpl',
 				newLine()
 
 				div(id: 'content') {
-					bodyContents()
+					pageContents()
 				}
 			}
 
 			secondaryNavigationContents()
+		}
+
+		if (footerContents) {
+			div(id: 'push') {}
+			footerContents()
 		}
 
 		div(id: 'push') {}
@@ -107,3 +105,15 @@ layout 'layout-main.tpl',
 			}
 		}
 	}
+}
+
+layout 'layout-main.tpl',
+	components: components,
+	title: content.title,
+	encoding: content.encoding,
+	headContents: headContents,
+	twitter: twitter,
+	openGraph: openGraph,
+	pageInfo: pageInfo,
+	logoUrl: config.menu_logoUrl ? config.menu_logoUrl : config.site_host,
+	bodyContents: bodyContents
