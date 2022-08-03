@@ -109,15 +109,6 @@ html(lang:'en', prefix:'og: https://ogp.me/ns#') {
 		}
 
 		bodyContents()
-		newLine()
-
-		div(id: 'push') {}
-
-		div(id: 'footer') {
-			div(class: 'container') {
-				p(class: 'muted credit', '&copy; 2020')
-			}
-		}
 
 		// Post scripts to load for speed
 		script(src: '/js/prettify.js') {}

@@ -99,8 +99,11 @@ layout 'layout-main.tpl',
 			secondaryNavigationContents()
 		}
 
-		if (footerContents) {
-			div(id: 'push') {}
-			footerContents()
+		div(id: 'push') {}
+
+		div(id: 'footer') {
+			div(class: 'container') {
+				p(class: 'muted credit', '&copy; 2020')
+			}
 		}
 	}
