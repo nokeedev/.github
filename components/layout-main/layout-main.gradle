@@ -15,6 +15,7 @@ dependencies {
     jbake project(':asciidoc')
     jbake project(':favicon')
     jbake project(':menu')
+    jbake project(':meta-encoding')
     jbake project(':meta-page-information')
     jbake project(':meta-open-graph')
     jbake project(':meta-twitter-card')

@@ -50,9 +50,9 @@ html(lang:'en', prefix:'og: https://ogp.me/ns#') {
 
 		if (twitter.enabled) layout 'meta-twitter-card.tpl', *:twitter
 		if (openGraph.enabled) layout 'meta-open-graph.tpl', *:openGraph
+		layout 'meta-encoding.tpl', encoding: encoding ?: 'UTF-8'
 
 		layout 'meta-page-information.tpl',
-			encoding: encoding,
 			keywords: keywords,
 			description: description,
 			url: url
