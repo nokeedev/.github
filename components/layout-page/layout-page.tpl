@@ -39,6 +39,7 @@ layout 'layout-main.tpl',
 	keywords: content.tags,
 	url: "${canonicalPathFor(content.uri)}/",
 	headContents: headContents,
+	multiLanguageSampleEnabled: multiLanguageSampleEnabled,
 	twitter: twitter,
 	logoUrl: config.menu_logoUrl ? config.menu_logoUrl : config.site_host,
 	bodyContents: contents {
