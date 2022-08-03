@@ -8,6 +8,15 @@ assert logoUrl && !logoUrl.trim().empty : "no logo url"
 
 def components = components ?: []
 
+def twitter = [
+	enabled: twitter != null,
+	card: twitter?.card ? twitter.card : 'summary',
+	title: twitter?.title,
+	description: twitter?.description,
+	creator: twitter?.creator,
+	image: twitter?.image
+]
+
 yieldUnescaped '<!DOCTYPE html>'
 html(lang:'en', prefix:'og: https://ogp.me/ns#') {
 	head {
@@ -32,12 +41,7 @@ html(lang:'en', prefix:'og: https://ogp.me/ns#') {
 		link(href: '/css/normalize-8.0.1.css', rel: 'stylesheet')
 		link(href: '/css/prettify.css', rel: 'stylesheet')
 
-		layout 'meta-twitter-card.tpl',
-			card: twitter?.card ? twitter.card : 'summary',
-			title: title,
-			description: description,
-			creator: twitter?.creator,
-			image: twitter?.image
+		if (twitter.enabled) layout 'meta-twitter-card.tpl', *:twitter
 
 		layout 'meta-open-graph.tpl',
 			title: title,

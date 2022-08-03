@@ -42,12 +42,17 @@ if (!headContents) {
 	}
 }
 
-def twitter = [:]
+def twitter = [
+		card: 'summary',
+		title: content.title,
+		url: "${canonicalPathFor(content.uri)}/",
+		description: content.description,
+		image: [
+			url: content?.leadimage ? "${canonicalPathFor(content.uri)}/${content.leadimage}" : null,
+			alt: content?.leadimagealt
+		]
+]
 if (content.twitter) twitter.putAll(content.twitter)
-twitter.put('image', [
-		url: content?.leadimage ? "${canonicalPathFor(content.uri)}/${content.leadimage}" : null,
-		alt: content?.leadimagealt
-])
 
 layout 'layout-main.tpl',
 	components: components,
