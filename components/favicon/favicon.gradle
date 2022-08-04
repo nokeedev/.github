@@ -5,7 +5,6 @@ plugins {
 
 jbake {
     assets.from('assets')
-    templates.from('component-favicon.head.gsp')
     templates.from('meta-favicon.tpl')
 }
 

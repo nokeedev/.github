@@ -7,7 +7,6 @@ jbake {
     assets.from('component-asciidoctor.css')
     assets.from('component-asciidoctor-color-override.css')
     assets.from('component-asciidoctor-override.css')
-    templates.from('component-asciidoc.head.gsp')
 }
 
 // Consumer will bake from content

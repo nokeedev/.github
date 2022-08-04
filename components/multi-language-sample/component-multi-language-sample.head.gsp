@@ -1,1 +1,0 @@
-<link href="/component-multi-language-sample.css" rel="stylesheet">

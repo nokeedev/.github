@@ -1,1 +1,0 @@
-<script src="/component-multi-language-sample.js"></script>

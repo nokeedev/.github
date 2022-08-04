@@ -6,8 +6,6 @@ plugins {
 jbake {
     assets.from('component-multi-language-sample.js')
     assets.from('component-multi-language-sample.css')
-    templates.from('component-multi-language-sample.head.gsp')
-    templates.from('component-multi-language-sample.foot.gsp')
 }
 
 // Consumer will bake from content

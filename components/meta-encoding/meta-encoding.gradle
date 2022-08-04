@@ -4,7 +4,6 @@ plugins {
 }
 
 jbake {
-    templates.from('component-meta-encoding.head.gsp')
     templates.from('meta-encoding.tpl')
 }
 
