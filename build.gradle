@@ -104,7 +104,6 @@ jbake {
 dependencies {
 	jbake project(':menu')
 	jbake project(':favicon')
-	jbake project(':title')
 	jbake project(':meta-page-information')
 	jbake project(':meta-open-graph')
 	jbake project(':meta-twitter-card')
