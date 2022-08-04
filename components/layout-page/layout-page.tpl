@@ -1,14 +1,29 @@
 assert content : "use Asciidoc content"
 assert config : "please pass config"
 
-def canonicalPathFor = { String path ->
-	def canonicalPath = path
-	if (canonicalPath.endsWith('/index.html')) {
-		canonicalPath = canonicalPath.substring(0, canonicalPath.lastIndexOf('/'))
-	} else if (canonicalPath == 'index.html') {
-		canonicalPath = ''
+final class CanonicalUrl {
+	private String canonicalUrl
+
+	private CanonicalUrl(String canonicalUrl) {
+		this.canonicalUrl = canonicalUrl
 	}
-	return "${config.site_host}/${canonicalPath}"
+
+	static CanonicalUrl forPath(String path) {
+		if (path.endsWith('/index.html')) {
+			return new CanonicalUrl(path.substring(0, path.lastIndexOf('/') + 1))
+		} else {
+			return new CanonicalUrl(path)
+		}
+	}
+
+	URL resolve(String path) {
+		assert canonicalUrl.endsWith("/")
+		return new URL("${canonicalUrl}${path}")
+	}
+
+	String toString() {
+		return canonicalUrl
+	}
 }
 
 def headerContents = headerContents
@@ -35,10 +50,10 @@ if (!headContents) {
 def twitter = [
 		card: 'summary',
 		title: content.title,
-		url: "${canonicalPathFor(content.uri)}/",
+		url: CanonicalUrl.forPath("${config.site_host}/${content.uri}"),
 		description: content.description,
 		image: [
-			url: content?.leadimage ? "${canonicalPathFor(content.uri)}/${content.leadimage}" : null,
+			url: content?.leadimage ? CanonicalUrl.forPath("${config.site_host}/${content.uri}").resolve(content.leadimage) : null,
 			alt: content?.leadimagealt
 		]
 ]
@@ -46,17 +61,17 @@ if (content.twitter) twitter.putAll(content.twitter)
 
 def openGraph = [
 	title: content.title,
-	url: "${canonicalPathFor(content.uri)}/",
+	url: CanonicalUrl.forPath("${config.site_host}/${content.uri}"),
 	description: content.description,
 	image: [
-		url: content?.leadimage ? "${canonicalPathFor(content.uri)}/${content.leadimage}" : null,
+		url: content?.leadimage ? CanonicalUrl.forPath("${config.site_host}/${content.uri}").resolve(content.leadimage) : null,
 		alt: content?.leadimagealt,
 	]
 ]
 
 def pageInfo = [
 	author: 'Nokee',
-	url: "${canonicalPathFor(content.uri)}/",
+	url: CanonicalUrl.forPath("${config.site_host}/${content.uri}"),
 	description: content.description,
 	keywords: content.tags,
 ]

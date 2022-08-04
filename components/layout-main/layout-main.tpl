@@ -12,14 +12,21 @@ def twitter = [
 	title: twitter?.title,
 	description: twitter?.description,
 	creator: twitter?.creator,
-	image: twitter?.image
+	image: [
+		url: twitter?.image?.url?.toString(),
+		alt: twitter?.image?.alt,
+	]
 ]
 
 def openGraph = [
 	enabled: openGraph != null,
 	title: openGraph?.title,
 	description: openGraph?.description,
-	url: openGraph?.url,
+	url: openGraph?.url?.toString(),
+	image: [
+		url: openGraph?.image?.url?.toString(),
+		alt: openGraph?.image?.alt,
+	]
 ]
 
 def pageInfo = [
@@ -27,7 +34,7 @@ def pageInfo = [
 	author: pageInfo?.author,
 	keywords: pageInfo?.keywords,
 	description: pageInfo?.description,
-	url: pageInfo?.url,
+	url: pageInfo?.url?.toString(),
 ]
 
 yieldUnescaped '<!DOCTYPE html>'
