@@ -4,19 +4,6 @@ plugins {
 	id 'maven-publish'
 }
 
-/**
- * Prepares ExecSpec for pandoc tool using host docker command.
- *
- * @param action  additional ExecSpec configuration action, must not be null
- * @return a ExecSpec configuration action, never null
- */
-private static Action<ExecSpec> pandoc(Action<? super ExecSpec> action) {
-	return { spec ->
-		spec.commandLine('docker', 'run', '--rm', '--volume', "${spec.workingDir}:/data", 'pandoc/core')
-		action.execute(spec)
-	}
-}
-
 class MarkdownToAsciidocSpec {
 	File markdownFile
 	String asciidocPath
@@ -48,11 +35,12 @@ private static Action<Task> convertMarkdownToAsciidoc(Action<? super MarkdownToA
 				}
 				out.flush()
 
-				project.exec(pandoc {
+				project.exec {
+					it.commandLine('pandoc')
 					it.args('-t', 'asciidoc', '-f', 'markdown-smart', project.relativePath(spec.markdownFile))
 					it.workingDir(project.projectDir)
 					it.standardOutput(outStream)
-				})
+				}
 			}
 			asciidocFile.text = asciidocFile.text.replace('== ', '= ')
 		}

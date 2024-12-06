@@ -1,0 +1,6 @@
+{
+	"build": { "dockerfile": "Dockerfile" },
+	"mounts": [
+		"source=${localEnv:HOME}/.m2,target=/root/.m2,type=bind,consistency=cached"
+	]
+}
