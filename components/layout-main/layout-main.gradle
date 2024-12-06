@@ -1,33 +1,33 @@
 plugins {
-    id 'net.nokeedev.jbake-site'
-    id 'maven-publish'
+	id 'net.nokeedev.jbake-site'
+	id 'maven-publish'
 }
 
 jbake {
-    templates.from('layout-main.tpl')
-    templates.from('logo-github.svg')
-    templates.from('logo-nokee.svg')
-    templates.from('logo-twitter.svg')
-    assets.from(fileTree(projectDir).include('css/*', 'js/*'))
+	templates.from('layout-main.tpl')
+	templates.from('logo-github.svg')
+	templates.from('logo-nokee.svg')
+	templates.from('logo-twitter.svg')
+	assets.from(fileTree(projectDir).include('css/*', 'js/*'))
 }
 
 dependencies {
-    jbake project(':asciidoc')
-    jbake project(':favicon')
-    jbake project(':menu')
-    jbake project(':meta-encoding')
-    jbake project(':meta-page-information')
-    jbake project(':meta-open-graph')
-    jbake project(':meta-twitter-card')
+	jbake project(':asciidoc')
+	jbake project(':favicon')
+	jbake project(':menu')
+	jbake project(':meta-encoding')
+	jbake project(':meta-page-information')
+	jbake project(':meta-open-graph')
+	jbake project(':meta-twitter-card')
 }
 
 // Consumer will bake from content
 ((AdhocComponentWithVariants) components.jbake).withVariantsFromConfiguration(jbake.dependencies.bakedElements.get()) {
-    it.skip()
+	it.skip()
 }
 
 publishing {
-    publications.register('jbake', MavenPublication) {
-        from components.jbake
-    }
+	publications.register('jbake', MavenPublication) {
+		from components.jbake
+	}
 }

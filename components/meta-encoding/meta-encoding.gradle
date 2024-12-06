@@ -1,20 +1,20 @@
 plugins {
-    id 'net.nokeedev.jbake-site'
-    id 'maven-publish'
+	id 'net.nokeedev.jbake-site'
+	id 'maven-publish'
 }
 
 jbake {
-    templates.from('meta-encoding.tpl')
+	templates.from('meta-encoding.tpl')
 }
 
 // Consumer will bake from content
 ((AdhocComponentWithVariants) components.jbake).withVariantsFromConfiguration(jbake.dependencies.bakedElements.get()) {
-    it.skip()
+	it.skip()
 }
 
 publishing {
-    publications.register('jbake', MavenPublication) {
-        from components.jbake
-        artifactId = "component-${project.name}"
-    }
+	publications.register('jbake', MavenPublication) {
+		from components.jbake
+		artifactId = "component-${project.name}"
+	}
 }

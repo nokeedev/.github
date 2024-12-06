@@ -1,22 +1,22 @@
 plugins {
-    id 'net.nokeedev.jbake-site'
-    id 'maven-publish'
+	id 'net.nokeedev.jbake-site'
+	id 'maven-publish'
 }
 
 jbake {
-    assets.from('component-asciidoctor.css')
-    assets.from('component-asciidoctor-color-override.css')
-    assets.from('component-asciidoctor-override.css')
+	assets.from('component-asciidoctor.css')
+	assets.from('component-asciidoctor-color-override.css')
+	assets.from('component-asciidoctor-override.css')
 }
 
 // Consumer will bake from content
 ((AdhocComponentWithVariants) components.jbake).withVariantsFromConfiguration(jbake.dependencies.bakedElements.get()) {
-    it.skip()
+	it.skip()
 }
 
 publishing {
-    publications.register('jbake', MavenPublication) {
-        from components.jbake
-        artifactId = "component-${project.name}"
-    }
+	publications.register('jbake', MavenPublication) {
+		from components.jbake
+		artifactId = "component-${project.name}"
+	}
 }
