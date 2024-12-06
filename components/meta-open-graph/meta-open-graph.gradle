@@ -5,6 +5,7 @@ plugins {
 
 jbake {
 	templates.from('meta-open-graph.tpl')
+	templates.from('meta-open-graph.ftl')
 }
 
 // Consumer will bake from content

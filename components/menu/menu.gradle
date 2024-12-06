@@ -7,6 +7,7 @@ jbake {
 	assets.from('component-menu.css')
 	assets.from('component-menu-light.css')
 	assets.from('component-menu-dark.css')
+	templates.from('menu.ftl')
 }
 
 // Consumer will bake from content

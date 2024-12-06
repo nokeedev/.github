@@ -5,6 +5,7 @@ plugins {
 
 jbake {
 	templates.from('meta-page-information.tpl')
+	templates.from('meta-page-information.ftl')
 }
 
 // Consumer will bake from content
